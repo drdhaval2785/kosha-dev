@@ -120,4 +120,134 @@ generate_dict.sh:  NOT preparing downloads
 ```
 
 
+# redo_hw.sh
+
+This uses three scripts hw.py, hw2.py and hw0.py and generates three output files harsahw.txt, harsahw2.txt and harsahw0.txt.
+
+## hw.py
+
+Reads two input files harsa.txt and harsa_hwextra.txt (currently blank).
+Generates harsahw.txt.
+
+Format of harsahw.txt
+```
+<L>1<pc>140<k1>ka<k2>ka<ln1>53<ln2>60
+<L>1<pc>140<k1>sUrya<k2>sUrya<ln1>53<ln2>60
+<L>1<pc>140<k1>veDas<k2>veDas<ln1>53<ln2>60
+<L>1<pc>140<k1>suKa<k2>suKa<ln1>53<ln2>60
+<L>1<pc>140<k1>mastaka<k2>mastaka<ln1>53<ln2>60
+<L>1<pc>140<k1>jala<k2>jala<ln1>53<ln2>60
+<L>1<pc>140<k1>Sloka<k2>Sloka<ln1>53<ln2>60
+<L>1<pc>140<k1>anuzwuB<k2>anuzwuB<ln1>53<ln2>60
+<L>1<pc>140<k1>yaSas<k2>yaSas<ln1>53<ln2>60
+<L>1<pc>140<k1>loka<k2>loka<ln1>53<ln2>60
+<L>1<pc>140<k1>Buvana<k2>Buvana<ln1>53<ln2>60
+<L>1<pc>140<k1>jana<k2>jana<ln1>53<ln2>60
+```
+
+Here, L stands for lnum, pc for page-column, k1 for key1, k2 for key2, ln1 for the starting line of the entry in harsa.txt and ln2 for the ending line of the entry.
+This would mean that entry with lnum 1 starts from 53 and ends at 60. Note that in this file, the line 53 is the metaline starting with `<L>`, and 60 is the metaline ending with `<LEND>` to mark the end of the entry. Thus, this is inclusive of the metalines.
+
+## hw2.py
+
+Reads harsahw.txt file as input.
+Generates harsahw2.txt file as output.
+
+Format
+
+```
+140:ka:53,60:1
+140:sUrya:53,60:1
+140:veDas:53,60:1
+140:suKa:53,60:1
+140:mastaka:53,60:1
+140:jala:53,60:1
+140:Sloka:53,60:1
+140:anuzwuB:53,60:1
+140:yaSas:53,60:1
+140:loka:53,60:1
+140:Buvana:53,60:1
+140:jana:53,60:1
+```
+
+The entries are in `pc:k1:ln1:ln2:lnum` format.
+
+## hw0.py
+
+Reads harsahw2.txt file as input.
+Generates harsahw0.txt file as output.
+In the present case harsahw2.txt and harsahw0.txt are identical, as there is no differences between key1 and key2 in these Sanskrit koshas.
+
+
+# redo_xml.sh
+
+This script generates harsa.xml by using harsa.txt and harsahw.txt with the help of make_xml.py script
+
+## make_xml.py
+
+This is the most important workhorse of the whole process. This generates the XML file from TXT file.
+
+## harsa.xml
+
+Format
+
+```
+<H1><h><key1>ka</key1><key2>ka</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>sUrya</key1><key2>sUrya</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>veDas</key1><key2>veDas</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>suKa</key1><key2>suKa</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>mastaka</key1><key2>mastaka</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>jala</key1><key2>jala</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>Sloka</key1><key2>Sloka</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>anuzwuB</key1><key2>anuzwuB</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>yaSas</key1><key2>yaSas</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>loka</key1><key2>loka</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>Buvana</key1><key2>Buvana</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+<H1><h><key1>jana</key1><key2>jana</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+```
+
+
+
+`<h>` tag holds key1, key2.
+`<body>` holds `<hwdetails>` and `<entrydetails>`
+`<tail>` holds L and pc.
+    hwdetails is a list of hwdetail (holding hw-gender, meaning pair).
+    entrydetails is a list of verses.
+
+I should stop at this juncture and analyse the information being captured in harsa.xml. 
+
+### Flaws in harsa.xml
+
+The following is the original information
+
+```
+<L>1<pc>140
+<k1>ka-puM<meanings>sUrya,veDas
+<k1>ka-klI<meanings>suKa,mastaka,jala
+<k1>Sloka-puM<meanings>anuzwuB,yaSas
+<k1>loka-puM<meanings>Buvana,jana
+sUrye veDasi vAyO kaH kaM suKe mastake jale .
+anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..
+<LEND>
+```
+
+This shows that there are four headwords with their associated meaning. Ideally when I search for `sUrya`, I should get only the following information.
+
+```
+<k1>ka-puM<meanings>sUrya,veDas
+sUrye veDasi vAyO kaH kaM suKe mastake jale .
+anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..
+```
+
+But the present information of `sUrya` in harsa.xml is as shown below.
+
+```
+<H1><h><key1>sUrya</key1><key2>sUrya</key2></h><body><hwdetails><hwdetail><hw><s>ka-puM</s></hw><meaning><s>sUrya,veDas</s></meaning></hwdetail><hwdetail><hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail></hwdetails><entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails></body><tail><L>1</L><pc>140</pc></tail></H1>
+```
+
+Flaw 1. One can see that there is superfluous inclusion of `<hw><s>ka-klI</s></hw><meaning><s>suKa,mastaka,jala</s></meaning></hwdetail><hwdetail><hw><s>Sloka-puM</s></hw><meaning><s>anuzwuB,yaSas</s></meaning></hwdetail><hwdetail><hw><s>loka-puM</s></hw><meaning><s>Buvana,jana</s></meaning></hwdetail>`.
+
+Flaw 2. One can see that there is copying of the entrydetails in all 12 headwords, unnecessarily.
+
+`<entrydetails><entrydetail><s>sUrye veDasi vAyO kaH kaM suKe mastake jale .</s></entrydetail><entrydetail><s>anuzwubyaSasoH Sloko lokastu Buvane jane .. 1 ..</s></entrydetail></entrydetails>`
 
