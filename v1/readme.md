@@ -257,23 +257,23 @@ Because of these duplications, the file size increases dramatically. harsa.txt o
 
 ```
 <hwdetails>
-<h><key1>ka</key1><key2>ka</key2><L>1</L><eid>1</eid></h>
-<h><key1>sUrya</key1><key2>sUrya</key2><L>1</L><eid>1</eid></h>
-<h><key1>veDas</key1><key2>veDas</key2><L>1</L><eid>1</eid></h>
-<h><key1>ka</key1><key2>ka</key2><L>1</L><eid>2</eid></h>
-<h><key1>suKa</key1><key2>suKa</key2><L>1</L><eid>2</eid></h>
-<h><key1>mastaka</key1><key2>mastaka</key2><L>1</L><eid>2</eid></h>
-<h><key1>jala</key1><key2>jala</key2><L>1</L><eid>2</eid></h>
-<h><key1>Sloka</key1><key2>Sloka</key2><L>1</L><eid>3</eid></h>
-<h><key1>anuzwuB</key1><key2>anuzwuB</key2><L>1</L><eid>3</eid></h>
-<h><key1>yaSas</key1><key2>yaSas</key2><L>1</L><eid>3</eid></h>
-<h><key1>loka</key1><key2>loka</key2><L>1</L><eid>4</eid></h>
-<h><key1>Buvana</key1><key2>Buvana</key2><L>1</L><eid>4</eid></h>
-<h><key1>jana</key1><key2>jana</key2><L>1</L><eid>4</eid></h>
+<h><key1>ka</key1><key2>ka</key2><L>1</L><eid>1</eid><pc>140</pc></h>
+<h><key1>sUrya</key1><key2>sUrya</key2><L>1</L><eid>1</eid><pc>140</pc></h>
+<h><key1>veDas</key1><key2>veDas</key2><L>1</L><eid>1</eid><pc>140</pc></h>
+<h><key1>ka</key1><key2>ka</key2><L>1</L><eid>2</eid><pc>140</pc></h>
+<h><key1>suKa</key1><key2>suKa</key2><L>1</L><eid>2</eid><pc>140</pc></h>
+<h><key1>mastaka</key1><key2>mastaka</key2><L>1</L><eid>2</eid><pc>140</pc></h>
+<h><key1>jala</key1><key2>jala</key2><L>1</L><eid>2</eid><pc>140</pc></h>
+<h><key1>Sloka</key1><key2>Sloka</key2><L>1</L><eid>3</eid><pc>140</pc></h>
+<h><key1>anuzwuB</key1><key2>anuzwuB</key2><L>1</L><eid>3</eid><pc>140</pc></h>
+<h><key1>yaSas</key1><key2>yaSas</key2><L>1</L><eid>3</eid><pc>140</pc></h>
+<h><key1>loka</key1><key2>loka</key2><L>1</L><eid>4</eid><pc>140</pc></h>
+<h><key1>Buvana</key1><key2>Buvana</key2><L>1</L><eid>4</eid><pc>140</pc></h>
+<h><key1>jana</key1><key2>jana</key2><L>1</L><eid>4</eid><pc>140</pc></h>
 </hwdetails>
 
 <entrydetails>
-<entry>
+<entry>  
 <L>1</L>
 <hwmeanings>
     <hwms><eid>1</eid><hw>ka-puM</hw><meanings>sUrya,veDas</meanings></hwms>
@@ -289,7 +289,7 @@ Because of these duplications, the file size increases dramatically. harsa.txt o
 </entrydetails>
 ```
 
-Here, `eid` is extra id, which is used to identify the hw-meaning pair in anekArthaka koshas. Similarly that may be used in samAnArthaka koshas.
+Here, `eid` is extra id, which is used to identify the hw-meaning pair in anekArthaka koshas. Similarly that may be used in samAnArthaka koshas. `eid` will be continuous througout the file, so that it is possible to tag to internally refer to some samAnArthaka group or anekArthaka group in the dictionary / from other dictionaries.
 
 If we search for a word in the headword in `hwdetails` section, we will be able to get `L` and `eid` for the searched word. 
 We can use the same to get the entry from `entrydetails` section. We can display the relevant `eid` only. The entry is shown indented just for the sake of readability. Otherwise, it would be on as single line.
