@@ -296,3 +296,24 @@ We can use the same to get the entry from `entrydetails` section. We can display
 
 As, this format reduces the problems of duplication, I will try to explore this. Otherwise, we will stick to the format used by Jim.
 
+# redo_postxml.sh
+
+1. Regenerate the sqlite file in pywork/sqlite directory, for storing.
+2. Regenerate query_dump.txt file in pywork/webtc2 directory, for search in case of advanced search.
+
+## Generate sqlite file
+
+pywork/sqlite/sqlite.py is the script.
+
+xxx.sqlite is an sqlite table with the name 'dictcode'.
+It has a table with three items in each row. key, lnum and line. row = (key, lnum, line) tuple is curated from xxx.xml file. These rows are put inside the sqlite file in a default batch of 10000 entries.
+
+## Generate query_dump file
+
+pywork/webtc2/init_query.py is the script.
+
+It generaes query_dump.txt file from xxx.xml file.
+It is used for advanced search.
+
+
+
